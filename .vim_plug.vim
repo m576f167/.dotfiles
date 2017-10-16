@@ -31,7 +31,7 @@ Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/honza/vim-snippets.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
-Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do' : './install.py --all' }
 
 " Initialize plugin system
 call plug#end()
