@@ -1,0 +1,61 @@
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+# Enable mouse movement
+mousetrack on
+
+# Change Escape key to Ctrl-b
+escape ^Bb
+
+# Remap break bind key so it does not break
+bind "^B" break 
+bind "b" break
+
+# Disable startup_message
+startup_message off
+
+# Huge scrllback buffer
+defscrollback 5000
+
+# Navigate between region using Ctrl-Arrow keys
+bindkey "^[[1;5C" focus right
+bindkey "^[[1;5D" focus left
+bindkey "^[[1;5A" focus up
+bindkey "^[[1;5B" focus down
+
+# Change window using Ctrl-Shift-[Left/Right]
+bindkey "^[[1;6C" next
+bindkey "^[[1;6D" prev
+
+# Go to copy mode using Ctrl-Shift-[Up/Down]
+bindkey "^[[1;6A" copy
+bindkey "^[[1;6B" copy
+
+# Change to next/previous layout
+bindkey "^[[1;6R" layout next
+bindkey "^[[1;6Q" layout prev
+
+# F2 puts Screen into resize mode. Resize regions using hjkl keys.
+bindkey "^[[24~" eval "command -c rsz" # enter resize mode
+
+# use hjkl keys to resize regions
+bind -c rsz h eval "resize -h -1" "command -c rsz"
+bind -c rsz j eval "resize -v -1" "command -c rsz"
+bind -c rsz k eval "resize -v +1" "command -c rsz"
+bind -c rsz l eval "resize -h +1" "command -c rsz"
+
+# quickly switch between regions using tab and arrows
+bind -c rsz \t    eval "focus"       "command -c rsz" # Tab
+bind -c rsz -k kl eval "focus left"  "command -c rsz" # Left
+bind -c rsz -k kr eval "focus right" "command -c rsz" # Right
+bind -c rsz -k ku eval "focus up"    "command -c rsz" # Up
+bind -c rsz -k kd eval "focus down" "command -c rsz" # Down
+ 
+# Show Status line
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%LD %d %LM | %{W}%C%A%{g}]'
+
+# Automatically load screen layout
+source .screen_layout

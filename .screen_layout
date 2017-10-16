@@ -1,0 +1,53 @@
+# Save last used layout
+layout autosave on
+
+# Default Windows
+screen -t Terminal 	#0
+screen -t Editor 	#1
+screen -t Monitor 	#2
+screen -t Console 	#3
+
+######################################################
+# Layout 1
+layout new Default
+select 1
+
+######################################################
+# Layout 2
+layout new IDE
+split
+split -v
+
+select 0
+
+focus right
+select 2
+resize -52
+
+focus down
+select 3
+resize -17
+
+focus
+
+######################################################
+# Layout 3
+layout new Performance_Monitoring
+split
+split -v
+focus down
+split -v
+focus up
+
+select 0
+focus right
+select 1
+focus down
+select 3
+focus left
+select 2
+focus up
+
+######################################################
+layout attach Default
+layout select Default

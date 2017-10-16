@@ -1,0 +1,11 @@
+# Add mssqlt-tools to path
+export PATH="$PATH:/opt/mssql-tools/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/.rvm/bin:/opt/mssql-tools/bin:/home/ubuntu/.rvm/bin
+export PATH=/home/ubuntu/Installation/GNUARMToolchain/gcc-arm-none-eabi-6-2017-q1-update/bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ubuntu/.rvm/bin:/opt/mssql-tools/bin:/home/ubuntu/.rvm/bin
+# /home/ubuntu/CodeSourcery/Sourcery_G++_Lite/bin:/home/ubuntu/qemu_stm32/arm-softmmu:
+
+# added by Anaconda3 4.4.0 installer
+#export PATH="/home/ubuntu/anaconda3/bin:$PATH"
