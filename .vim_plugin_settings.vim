@@ -72,3 +72,5 @@ let g:UltiSnipsEditSplit="vertical"
 " Vim Screen
 let g:ScreenImpl='GnuScreen'
 
+" Vim R
+let g:R_assign=0
