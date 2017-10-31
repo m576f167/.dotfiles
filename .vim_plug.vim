@@ -33,6 +33,7 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do' : './install.py --all' }
 Plug 'https://github.com/easymotion/vim-easymotion.git'
+Plug 'https://github.com/chrisbra/csv.vim.git'
 
 " Initialize plugin system
 call plug#end()

@@ -246,4 +246,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" Source vim plugin setting
 so ~/.vim_plugin_settings.vim
+
+" Source specific machine setting
+so ~/.vim_alias.vim
