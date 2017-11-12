@@ -29,6 +29,7 @@ set ruler        		" show the cursor position all the time
 set laststatus=2  		" Always display the status line
 set autoread      		" Reload files changed outside vim
 set numberwidth=5 		" Set number width
+set backspace=2 		" make backspace work like most other programs
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! ! 
 set cursorline    		" highlight the current line
