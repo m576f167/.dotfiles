@@ -1,13 +1,13 @@
 " Set vim term if running inside GNU Screen
-" if match($TERM, "screen")!=-1
-" 	set term=xterm
-" endif
-" if match($TERM, "screen-256color")!=-1
-" 	set term=xterm-256color
-" endif
-" if match($TERM, "screen-256color-bce")!=-1
-" 	set term=xterm-256color
-" endif
+if match($TERM, "screen")!=-1
+	set term=xterm
+endif
+if match($TERM, "screen-256color")!=-1
+	set term=xterm-256color
+endif
+if match($TERM, "screen-256color-bce")!=-1
+	set term=xterm-256color
+endif
 
 " Vim Configuration
 set ttymouse=xterm2 		" Enable mouse resizing when using GNU Screen
