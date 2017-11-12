@@ -69,6 +69,10 @@ function! ToggleMouseCap()
 endfunction
 :map <Leader><Leader> :call ToggleMouseCap()<Enter>
 
+" Map zZ to simulate horizontal centering
+:map zp zezL
+:map zP zszH
+
 " Use tab to jump between blocks, because it's easier
 :nnoremap <tab> %
 :vnoremap <tab> %
