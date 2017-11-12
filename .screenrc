@@ -38,8 +38,8 @@ bindkey "^[[1;6B" copy
 bindkey "^[[1;6R" layout next
 bindkey "^[[1;6Q" layout prev
 
-# F2 puts Screen into resize mode. Resize regions using hjkl keys.
-bindkey "^[[24~" eval "command -c rsz" # enter resize mode
+# Ctrl-Shift-F12 puts Screen into resize mode. Resize regions using hjkl keys.
+bindkey "^[[24;6~" eval "command -c rsz" # enter resize mode
 
 # use hjkl keys to resize regions
 bind -c rsz h eval "resize -h -1" "command -c rsz"
