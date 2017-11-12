@@ -9,6 +9,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Automatically open NERDTree when open 'vim'
 " Close vim if only NERDTree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" NERDTreeToggle
+:nmap <M-F8> :NERDTreeToggle<CR>
 
 " Colors Solarized
 let g:solarized_termcolors=256
