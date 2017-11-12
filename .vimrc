@@ -135,7 +135,7 @@ endfunction
 " Move to the next window 
 :map <C-w> <C-w>w
 " Move to the next tab
-:map mn :tabn <Enter>
+" :map mn :tabn <Enter>
 
 " Indent line(s)
 :map <C-i> >>
