@@ -41,8 +41,9 @@ let g:airline_solarized_bg='dark'
 :map <Tab>q :Scratch<CR>i
 
 " Go to next and previous buffer
-:noremap <CR> :bn<Enter>
-:noremap <Leader><CR> :bp<Enter>
+:noremap <F12> :bn<Enter>
+:noremap <S-F12> :bp<Enter>
+:noremap <M-F12> :ls<Enter>
 " Close buffer
 :noremap <Space> :Bdelete<Enter>
 
