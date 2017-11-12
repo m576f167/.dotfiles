@@ -148,8 +148,8 @@ endfunction
 :imap <C-f> <Esc>/
 
 " Search pattern accross files in the current directory
-:noremap <C-f><C-f> :vim // * <Bar> cw <left><left><left><left><left><left><left><left><left>
-:imap <C-f><C-f> <Esc>:vim // * <Bar> cw <left><left><left><left><left><left><left><left><left>
+:noremap <C-f><C-f> :vim  **/* <Bar> cw <left><left><left><left><left><left><left><left><left><left><left>
+:imap <C-f><C-f> <Esc>:vim  **/* <Bar> cw <left><left><left><left><left><left><left><left><left><left><left>
 
 " Go to next match
 :map <F3> n
