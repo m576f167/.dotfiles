@@ -45,7 +45,7 @@ let g:airline_solarized_bg='dark'
 :noremap <S-F12> :bp<Enter>
 :noremap <M-F12> :ls<Enter>
 " Close buffer
-:noremap <Space> :Bdelete<Enter>
+:noremap <S-F7> :Bdelete<Enter>
 
 " YouCompleteMe
 let g:ycm_server_python_interpreter = '/usr/bin/python'

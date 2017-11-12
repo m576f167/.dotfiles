@@ -151,21 +151,23 @@ endfunction
 :noremap <C-f><C-f> :vim  **/* <Bar> cw <left><left><left><left><left><left><left><left><left><left><left>
 :imap <C-f><C-f> <Esc>:vim  **/* <Bar> cw <left><left><left><left><left><left><left><left><left><left><left>
 
-" Go to next match
-:map <F3> n
-" Go to previous match
-:map <F2> N
+" Go to next tab
+:noremap <F5> :tabn<CR>
+" Go to previous tab
+:noremap <S-F5> :tabp<CR>
+" Show tab list
+:noremap <M-F5> :tabs<CR>
 " Close tab
-:map <F4> :tabclose <Enter>
+:map <F7> :tabclose <Enter>
 " Find and replace
 :map <C-F><C-R> :%s/
 
 " Go to previous tag in tag stack
-:map <F5> :tp<Enter>
+:noremap <S-F6> :tp<Enter>
 " Go to next tag in tag stack
-:map <F6> :tn<Enter>
+:noremap <F6> :tn<Enter>
 " Show tag list
-:map <F7> :ts<Enter>
+:noremap <M-F6> :ts<Enter>
 
 " Map up, down, left, right for GNU screen
 :map ^[[1;5A <S-Up>
