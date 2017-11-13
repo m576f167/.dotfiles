@@ -77,12 +77,3 @@ let g:ScreenImpl='GnuScreen'
 
 " Vim R
 let g:R_assign=0
-function StartR_Tmux_Custom_Function()
-	let g:R_in_buffer=0 		" Disable running R in vim buffer
-	let g:R_tmux_split=1 		" Enable running R in tmux split
-	exe "source " . substitute(g:rplugin_home, " ", "\\ ", "g") . "/R/tmux.vim"
-	exe "source " . substitute(g:rplugin_home, " ", "\\ ", "g") . "/R/tmux_split.vim"
-	call StartR("R")
-endfunction
-" call RCreateMaps("nvi", '<Plug>RStart_Tmux_Custom',        'RF', ':call StartR_Tmux_Custom_Function("R")')
-:map <Leader>RF :call StartR_Tmux_Custom_Function() <CR>
