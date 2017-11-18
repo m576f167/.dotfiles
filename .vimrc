@@ -135,9 +135,9 @@ endfunction
 :imap <C-r> <Esc><C-r>i
 
 " Horizontal split
-:map <C-g> :split <Enter>
+:map <C-g><C-g> :split <Enter>
 " Vertical split
-:map <C-y> :vsplit <Enter>
+:map <C-g><C-v> :vsplit <Enter>
 
 " Move to the upper window
 :noremap <C-k> <C-w>k
@@ -149,7 +149,7 @@ endfunction
 :noremap <C-h> <C-w>h
 
 " Move to the next window 
-:map <C-w> <C-w>w
+" :map <C-w> <C-w>w
 " Move to the next tab
 " :map mn :tabn <Enter>
 
@@ -192,46 +192,46 @@ endfunction
 :map ^[[1;5C <S-Right>
 
 " Normal mode up, down, left, right highlight
-:nmap <S-Up> vk
-:nmap <S-Down> vj
-:nmap <S-Left> vh
-:nmap <S-Right> vl
+" :nmap <S-Up> vk
+" :nmap <S-Down> vj
+" :nmap <S-Left> vh
+" :nmap <S-Right> vl
 
 " Visual mode up, down, left, right highlight
-:vmap <S-Up> k
-:vmap <S-Down> j
-:vmap <S-Left> h
-:vmap <S-Right> l
+" :vmap <S-Up> k
+" :vmap <S-Down> j
+" :vmap <S-Left> h
+" :vmap <S-Right> l
 
 " Select mode up, down, left, right highlight
-:smap <S-Up> k
-:smap <S-Down> j
-:smap <S-Left> h
-:smap <S-Right> l
+" :smap <S-Up> k
+" :smap <S-Down> j
+" :smap <S-Left> h
+" :smap <S-Right> l
 
 " Insert mode up, down, left, right higlight
-:imap <S-Up> <Esc>vk
-:imap <S-Down> <Esc>vj
-:imap <S-Left> <Esc>vh
-:imap <S-Right> <Esc>vl
+" :imap <S-Up> <Esc>vk
+" :imap <S-Down> <Esc>vj
+" :imap <S-Left> <Esc>vh
+" :imap <S-Right> <Esc>vl
 
 " Normal mode up, down, left, right highlight (using i, j, k, l)
-:nmap <S-k> vk
-:nmap <S-j> vj
-:nmap <S-h> vh
-:nmap <S-l> vl
+" :nmap <S-k> vk
+" :nmap <S-j> vj
+" :nmap <S-h> vh
+" :nmap <S-l> vl
 
 " Visual mode up, down, left, right highlight (using i, j, k, l)
-:vmap <S-k> k
-:vmap <S-j> j
-:vmap <S-h> h
-:vmap <S-l> l
+" :vmap <S-k> k
+" :vmap <S-j> j
+" :vmap <S-h> h
+" :vmap <S-l> l
 
 " Select mode up, down, left, right highlight (using i, j, k, l)
-:smap <S-k> k
-:smap <S-j> j
-:smap <S-h> h
-:smap <S-l> l
+" :smap <S-k> k
+" :smap <S-j> j
+" :smap <S-h> h
+" :smap <S-l> l
 
 " Insert mode up, down, left, right highlight
 " :imap <S-I> <Esc>vk
