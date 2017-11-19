@@ -11,6 +11,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Au
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTreeToggle
 :nmap <M-F8> :NERDTreeToggle<CR>
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
 
 " Colors Solarized
 let g:solarized_termcolors=256
