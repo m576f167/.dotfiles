@@ -135,9 +135,9 @@ endfunction
 :imap <C-r> <Esc><C-r>i
 
 " Horizontal split
-:map <C-g><C-g> :split <Enter>
+" :map <C-g><C-g> :split <Enter>
 " Vertical split
-:map <C-g><C-v> :vsplit <Enter>
+" :map <C-g><C-v> :vsplit <Enter>
 
 " Move to the upper window
 :noremap <C-k> <C-w>k
