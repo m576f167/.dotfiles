@@ -35,6 +35,7 @@ Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do' : './install.py --a
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/chrisbra/csv.vim.git'
 Plug 'https://github.com/xuhdev/vim-latex-live-preview.git', {'for' : 'tex'}
+Plug 'https://github.com/python-mode/python-mode.git'
 
 " Initialize plugin system
 call plug#end()
