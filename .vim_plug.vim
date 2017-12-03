@@ -34,6 +34,7 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do' : './install.py --all' }
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/chrisbra/csv.vim.git'
+Plug 'https://github.com/xuhdev/vim-latex-live-preview.git', {'for' : 'tex'}
 
 " Initialize plugin system
 call plug#end()
