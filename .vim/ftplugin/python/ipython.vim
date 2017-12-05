@@ -10,4 +10,4 @@
 :smap <Leader>d :ScreenSend<CR><Esc>`>j0
 :map <Leader>fe :ScreenSend<CR>
 :map <Leader>rq :ScreenQuit<CR>
-:map <Leader>rf :IPython
+:map <Leader>rf :IPython<CR>
