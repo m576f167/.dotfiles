@@ -11,3 +11,5 @@
 :map <Leader>fe :ScreenSend<CR>
 :map <Leader>rq :ScreenQuit<CR>
 :map <Leader>rf :IPython<CR>
+:map <Leader>ce {<S-v>}:ScreenSend<CR><S-v>`>
+:map <Leader>ca {<S-v>}:ScreenSend<CR><Esc>`>j0
