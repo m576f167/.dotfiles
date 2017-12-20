@@ -82,3 +82,8 @@ let g:ScreenImpl='GnuScreen'
 
 " Vim R
 let g:R_assign=0
+
+" Vim ack
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
