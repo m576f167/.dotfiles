@@ -1,4 +1,13 @@
 " Vim Screen
+function HackUltiSnipsWarning()
+	unlet b:did_autoload_ultisnips
+	if !exists("g:_uspy")
+		finish
+	endif
+
+	exec g:_uspy "sys.path.append('/Users/user/.vim/plugged/ultisnips/pythonx')"
+endfunction
+
 :nmap <Leader>e <S-v>:ScreenSend<CR><S-v>`>
 :vmap <Leader>e :ScreenSend<CR><S-v>`>
 :smap <Leader>e :ScreenSend<CR><S-v>`>
@@ -13,3 +22,4 @@
 :map <Leader>rf :IPython<CR>
 :map <Leader>ce {<S-v>}:ScreenSend<CR><S-v>`>
 :map <Leader>ca {<S-v>}:ScreenSend<CR><Esc>`>j0
+:map <Leader>rr :call HackUltiSnipsWarning()<CR>
