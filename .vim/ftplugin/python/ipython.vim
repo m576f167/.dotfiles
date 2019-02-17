@@ -20,6 +20,8 @@ endfunction
 :map <Leader>fe :ScreenSend<CR>
 :map <Leader>rq :ScreenQuit<CR>
 :map <Leader>rf :IPython<CR>
-:map <Leader>ce {<S-v>}:ScreenSend<CR><S-v>`>
-:map <Leader>ca {<S-v>}:ScreenSend<CR><Esc>`>j0
+":map <Leader>ce {<S-v>}:ScreenSend<CR><S-v>`>
+":map <Leader>ca {<S-v>}:ScreenSend<CR><Esc>`>j0
+:map <Leader>ce ?###{python}<CR>j<S-v>/###<CR>k:ScreenSend<CR><C-f><C-c><S-v>`>
+:map <Leader>ca ?###{python}<CR>j<S-v>/###<CR>k:ScreenSend<CR><Esc>/###{python}<CR><C-f><C-c>j0
 :map <Leader>rr :call HackUltiSnipsWarning()<CR>
