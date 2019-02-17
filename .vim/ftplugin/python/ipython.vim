@@ -24,4 +24,6 @@ endfunction
 ":map <Leader>ca {<S-v>}:ScreenSend<CR><Esc>`>j0
 :map <Leader>ce ?###{python *\w*}<CR>j<S-v>/###<CR>k:ScreenSend<CR><C-f><C-c><S-v>`>
 :map <Leader>ca ?###{python *\w*}<CR>j<S-v>/###<CR>k:ScreenSend<CR><Esc>/###{python *\w*}<CR><C-f><C-c>j0
+:map <Leader>gn /###{python *\w*}<CR><C-f><C-c>j0
+:map <Leader>gN ?###{python *\w*}<CR>n<C-f><C-c>j0
 :map <Leader>rr :call HackUltiSnipsWarning()<CR>
