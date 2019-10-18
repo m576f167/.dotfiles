@@ -6,6 +6,12 @@ function HackUltiSnipsWarning()
 	endif
 
 	exec g:_uspy "sys.path.append('/Users/user/.vim/plugged/ultisnips/pythonx')"
+	
+	let g:ScreenShellSendPrefixOld = g:ScreenShellSendPrefix
+	let g:ScreenShellSendSuffixOld = g:ScreenShellSendSuffix
+	let g:ScreenShellSendPrefix = '%cpaste'
+	let g:ScreenShellSendSuffix = '--'
+	let g:ScreenShellSendVarsRestore = 1
 endfunction
 
 :nmap <Leader>e <S-v>:ScreenSend<CR><S-v>`>
