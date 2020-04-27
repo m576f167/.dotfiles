@@ -87,3 +87,12 @@ let g:R_assign=0
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
+
+" Easy tags
+let g:easytags_autorecurse = 0
+function SwitchEasyTagsAutorecurse()
+	let g:easytags_autorecurse += 1
+	let g:easytags_autorecurse = g:easytags_autorecurse % 2
+endfunction
+:nmap <Leader>ctr :call SwitchEasyTagsAutorecurse()<Enter>
+:nmap <Leader>ctu :UpdateTags<Enter>
