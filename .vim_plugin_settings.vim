@@ -89,6 +89,7 @@ if executable('ag')
 endif
 
 " Easy tags
+let g:easytags_async = 1
 let g:easytags_autorecurse = 0
 function SwitchEasyTagsAutorecurse()
 	let g:easytags_autorecurse += 1
