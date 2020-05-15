@@ -43,8 +43,12 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " set splitbelow
 set splitright
 set colorcolumn=+1 		" Show color column
-"Toggle relative numbering, and set to absolute on loss of focus or insert
-"mode
+" Indentation related settings
+set tabstop=2
+set shiftwidth=2
+set expandtab
+" Toggle relative numbering, and set to absolute on loss of focus or insert
+" mode
 set rnu
 function! ToggleNumbersOn()
 	set nu!
@@ -54,10 +58,15 @@ function! ToggleRelativeOn()
 	set rnu!
 	set nu
 endfunction
+function! ToggleNuAndRnuOn()
+	set nu!
+	set rnu!
+endfunction
 autocmd FocusLost * call ToggleRelativeOn()
 autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleRelativeOn()
+:map <Leader>`! :call ToggleNuAndRnuOn()<Enter>
 " Always use vertical diffs
 set diffopt+=vertical
 "update dir to current file
@@ -67,7 +76,22 @@ set diffopt+=vertical
 function! ToggleMouseCap()
 	exe 'set mouse='.(empty(&mouse)?'a':'')
 endfunction
-:map <Leader><Leader> :call ToggleMouseCap()<Enter>
+:map <Leader>`` :call ToggleMouseCap()<Enter>
+
+" Map Shift tab to insert literal Tab
+:inoremap <S-tab> <C-V><Tab>
+
+" Map Leader tab j and k to decrease or increase tabstop and shiftwidth
+function! IncreaseTab()
+	exe 'set tabstop+=1'
+	exe 'set shiftwidth+=1'
+endfunction
+function! DecreaseTab()
+	exe 'set tabstop-=1'
+	exe 'set shiftwidth-=1'
+endfunction
+:map <Leader><Tab>j :call DecreaseTab()<Enter>
+:map <Leader><Tab>k :call IncreaseTab()<Enter>
 
 " Map zZ to simulate horizontal centering
 :map zp zezL
