@@ -55,7 +55,7 @@ let g:airline_solarized_bg='dark'
 :noremap <S-F7> :Bdelete<Enter>
 
 " YouCompleteMe
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 "
 " " Make YCM compatible with UltiSnips (using supertab)
 " let g:SuperTabDefaultCompletionType = '<C-Space>'
@@ -97,3 +97,8 @@ function SwitchEasyTagsAutorecurse()
 endfunction
 :nmap <Leader>ctr :call SwitchEasyTagsAutorecurse()<Enter>
 :nmap <Leader>ctu :UpdateTags<Enter>
+
+" Vim Signify
+:hi CursorLineNr cterm=none
+:hi CursorLineNr ctermbg=235
+:hi SignColumn ctermbg=235
