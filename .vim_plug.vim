@@ -4,9 +4,10 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+Plug 'https://github.com/Yggdroot/indentLine.git'
 Plug 'https://github.com/arialdomartini/oh-my-git.git'
-Plug 'https://github.com/jiangmiao/auto-pairs.git' 
-Plug 'https://github.com/moll/vim-bbye.git' 
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/moll/vim-bbye.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/jalvesaq/Nvim-R.git'
