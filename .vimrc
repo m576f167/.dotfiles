@@ -47,6 +47,11 @@ set colorcolumn=+1 		" Show color column
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+" Map leader key to space
+let mapleader = " "
+:nnoremap <Space> <nop>
+
 " Toggle relative numbering, and set to absolute on loss of focus or insert
 " mode
 set rnu
