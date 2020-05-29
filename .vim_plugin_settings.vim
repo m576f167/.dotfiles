@@ -100,3 +100,6 @@ endfunction
 :hi CursorLineNr cterm=none
 :hi CursorLineNr ctermbg=235
 :hi SignColumn ctermbg=235
+
+" Vim DevIcons
+set encoding=UTF-8
