@@ -42,6 +42,7 @@ Plug 'https://github.com/xuhdev/vim-latex-live-preview.git', {'for' : 'tex'}
 Plug 'https://github.com/python-mode/python-mode.git'
 Plug 'https://github.com/mileszs/ack.vim.git'
 Plug 'szymonmaszke/vimpyter'
+Plug 'https://github.com/sheerun/vim-polyglot.git'
 
 " Initialize plugin system
 call plug#end()
