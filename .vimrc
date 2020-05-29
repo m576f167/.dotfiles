@@ -1,48 +1,52 @@
 " Set vim term if running inside GNU Screen
 if match($TERM, "screen")!=-1
-	set term=xterm
+  set term=xterm
 endif
 if match($TERM, "screen-256color")!=-1
-	set term=xterm-256color
+  set term=xterm-256color
 endif
 if match($TERM, "screen-256color-bce")!=-1
-	set term=xterm-256color
+  set term=xterm-256color
 endif
 
 " Vim Configuration
-set ttymouse=xterm2 		" Enable mouse resizing when using GNU Screen
-set mouse=a 			" Enable mouse
-set nu 				" Display line numbers
-set showcmd			" Show typed commands
-set showmatch			" Show matching brackets
-set smartcase			" Use case if any caps used in searching pattern
-set ignorecase			" Ignore case when searching pattern
-set nowrap			" No breaking line 
-set whichwrap+=<,>,h,l,[,]	" Wrapping to next or previous lines when moving
-set scrollopt+=hor		" Set horizontal scrolling on
-set sidescroll=1		" Set horizontal scrolling on
-set autoindent			" Turns autoindent on
-set smartindent			" Does the right thing (mostly) in programs
-set hidden			" Enable hidden buffer
-filetype plugin on		" Enable checking for filetype when opening
-set ruler        		" show the cursor position all the time
-set laststatus=2  		" Always display the status line
-set autoread      		" Reload files changed outside vim
-set numberwidth=5 		" Set number width
-set backspace=2 		" make backspace work like most other programs
+set ttymouse=xterm2             " Enable mouse resizing when using GNU Screen
+set mouse=a                     " Enable mouse
+set nu                          " Display line numbers
+set showcmd                     " Show typed commands
+set showmatch                   " Show matching brackets
+set smartcase                   " Use case if any caps used in searching pattern
+set ignorecase                  " Ignore case when searching pattern
+set nowrap                      " No breaking line
+set whichwrap+=<,>,h,l,[,]      " Wrapping to next or previous lines when moving
+set scrollopt+=hor              " Set horizontal scrolling on
+set sidescroll=1                " Set horizontal scrolling on
+set autoindent                  " Turns autoindent on
+set smartindent                 " Does the right thing (mostly) in programs
+set hidden                      " Enable hidden buffer
+filetype plugin on              " Enable checking for filetype when opening
+set ruler                       " show the cursor position all the time
+set laststatus=2                " Always display the status line
+set autoread                    " Reload files changed outside vim
+set numberwidth=5               " Set number width
+set backspace=2                 " make backspace work like most other programs
+set cursorline                  " highlight the current line
+set wildmenu                    " Wild Menu
+set wildmode=list:longest,full  " Wildmode
+set hlsearch                    " Highlight all search
+set incsearch                   " Incremental searching
+
 " Trigger autoread when changing buffers or coming back to vim in terminal.
-au FocusGained,BufEnter * :silent! ! 
-set cursorline    		" highlight the current line
-set wildmenu 			" Wild Menu
-set wildmode=list:longest,full 	" Wildmode
-set hlsearch 			" Highlight all search
-set incsearch 			" Incremental searching
+au FocusGained,BufEnter * :silent! !
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
+
 " Open new split panes to right and bottom, which feels more natural
 " set splitbelow
 set splitright
-set colorcolumn=+1 		" Show color column
+set colorcolumn=+1  " Show color column
+
 " Indentation related settings
 set tabstop=2
 set shiftwidth=2
@@ -52,34 +56,35 @@ set expandtab
 let mapleader = " "
 :nnoremap <Space> <nop>
 
-" Toggle relative numbering, and set to absolute on loss of focus or insert
-" mode
+" Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
-	set nu!
-	set rnu
+  set nu!
+  set rnu
 endfunction
 function! ToggleRelativeOn()
-	set rnu!
-	set nu
+  set rnu!
+  set nu
 endfunction
 function! ToggleNuAndRnuOn()
-	set nu!
-	set rnu!
+  set nu!
+  set rnu!
 endfunction
 autocmd FocusLost * call ToggleRelativeOn()
 autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleRelativeOn()
 :map <Leader>`! :call ToggleNuAndRnuOn()<Enter>
+
 " Always use vertical diffs
 set diffopt+=vertical
-"update dir to current file
+
+" Update dir to current file
 " autocmd BufEnter * silent! cd %:p:h
 
-" Toggle Mouse. Note: Leader = '\'
+" Toggle Mouse
 function! ToggleMouseCap()
-	exe 'set mouse='.(empty(&mouse)?'a':'')
+  exe 'set mouse='.(empty(&mouse)?'a':'')
 endfunction
 :map <Leader>`` :call ToggleMouseCap()<Enter>
 
@@ -88,12 +93,12 @@ endfunction
 
 " Map Leader tab j and k to decrease or increase tabstop and shiftwidth
 function! IncreaseTab()
-	exe 'set tabstop+=1'
-	exe 'set shiftwidth+=1'
+  exe 'set tabstop+=1'
+  exe 'set shiftwidth+=1'
 endfunction
 function! DecreaseTab()
-	exe 'set tabstop-=1'
-	exe 'set shiftwidth-=1'
+  exe 'set tabstop-=1'
+  exe 'set shiftwidth-=1'
 endfunction
 :map <Leader><Tab>j :call DecreaseTab()<Enter>
 :map <Leader><Tab>k :call IncreaseTab()<Enter>
@@ -184,10 +189,13 @@ endfunction
 
 " Indent line(s)
 :map <C-i> >>
+
 " Safely close (warn for unsaved changes)  
 :map <F9> :q <Enter>
+
 " Forced close (no warning for unsaved changes)
 :map <F10> :q! <Enter>
+
 " Search pattern
 :map <C-f> /
 :imap <C-f> <Esc>/
@@ -204,6 +212,7 @@ endfunction
 :noremap <M-F5> :tabs<CR>
 " Close tab
 :map <F7> :tabclose <Enter>
+
 " Find and replace
 :map <C-F><C-R> :%s/
 

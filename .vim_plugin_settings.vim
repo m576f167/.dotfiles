@@ -1,4 +1,3 @@
-
 " Vim Javascript plugin 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
@@ -15,7 +14,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
-
 
 " Colors Solarized
 let g:solarized_termcolors=256
