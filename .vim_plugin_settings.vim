@@ -1,4 +1,9 @@
-" Vim Javascript plugin 
+" Vim python mode
+let g:pymode_folding = 0
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
+
+" Vim Javascript plugin
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
