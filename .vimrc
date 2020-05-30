@@ -24,7 +24,9 @@ set sidescroll=1                " Set horizontal scrolling on
 set autoindent                  " Turns autoindent on
 set smartindent                 " Does the right thing (mostly) in programs
 set hidden                      " Enable hidden buffer
-filetype plugin on              " Enable checking for filetype when opening
+filetype plugin on              " Enable checking for filetype plugin
+filetype indent on              " Enable checking for filetype indent
+syntax on                       " Enable syntax color
 set ruler                       " show the cursor position all the time
 set laststatus=2                " Always display the status line
 set autoread                    " Reload files changed outside vim
@@ -296,11 +298,6 @@ endfunction
 
 " Source Vim Plug
 so ~/.vim_plug.vim
-
-" Pathogen plugin
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 " Source vim plugin setting
 so ~/.vim_plugin_settings.vim
