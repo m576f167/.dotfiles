@@ -440,6 +440,7 @@ let g:ScreenImpl='GnuScreen'
 "*****************************************************************************
 "" Vim Floaterm
 "*****************************************************************************
+" To Scrol window in terminal, press <C-w>N to switch to normal terminal mode
 let g:floaterm_keymap_new    =  '<leader><F1>'
 let g:floaterm_keymap_prev   =  '<leader><F2>'
 let g:floaterm_keymap_next   =  '<leader><F3>'
