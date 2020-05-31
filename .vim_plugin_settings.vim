@@ -143,6 +143,8 @@ let g:coc_global_extensions = [
       \ 'coc-lists',
       "\ for markdown linting
       \ 'coc-markdownlint',
+      "\ for marketplace
+      \ 'coc-marketplace',
       "\ for csharp and visualbasic
       \ 'coc-omnisharp',
       "\ for php, use intelephense-docs
@@ -243,12 +245,14 @@ nnoremap <silent> ,c  :<C-u>CocList commands<cr>
 nnoremap <silent> ,o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent> ,s  :<C-u>CocList -I symbols<cr>
-" LIst all bookmarks.
+" List all bookmarks.
 nnoremap <silent> ,b  :<C-u>CocList bookmark<CR>
-" LIst floating terminals.
+" List floating terminals.
 nnoremap <silent> ,t  :<C-u>CocList floaterm<CR>
-" LIst marks.
+" List marks.
 nnoremap <silent> ,m  :<C-u>CocList marks<CR>
+" List marketplace.
+nnoremap <silent> ,mp  :<C-u>CocList marketplace<CR>
 " List command history.
 nnoremap <silent> ,h  :<C-u>CocList cmdhistory<CR>
 " List Yank history.
