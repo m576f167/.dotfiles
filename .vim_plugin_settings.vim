@@ -123,6 +123,8 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       "\ css modules intellisense.
       \ 'coc-cssmodules',
+      "\ for Docker
+      \ 'coc-docker',
       "\ Eslint extension for coc.nvim
       \ 'coc-eslint',
       "\ for vim-floaterm integration
@@ -147,8 +149,12 @@ let g:coc_global_extensions = [
       \ 'coc-phpls',
       "\ for PowerShellEditorService integration
       \ 'coc-powershell',
+      "\ for managing project
+      \ 'coc-project',
       "\ for r, use R languageserver
       \ 'coc-r-lsp',
+      "\ for bash
+      \ 'coc-sh',
       "\ provides snippets solution
       \ 'coc-snippets',
       "\ for ruby, use solargraph
@@ -243,14 +249,18 @@ nnoremap <silent> ,b  :<C-u>CocList bookmark<CR>
 nnoremap <silent> ,t  :<C-u>CocList floaterm<CR>
 " LIst marks.
 nnoremap <silent> ,m  :<C-u>CocList marks<CR>
+" List command history.
+nnoremap <silent> ,h  :<C-u>CocList cmdhistory<CR>
 " List Yank history.
 nnoremap <silent> ,y  :<C-u>CocList -A --normal yank<cr>
+" List projects.
+nnoremap <silent> ,p  :<C-u>CocList project<CR>
 " List snippets.
 nnoremap <silent> ,sn :<C-u>CocList snippets<cr>
 " List templates.
 nnoremap <silent> ,tmp :<C-u>CocList templates<cr>
 " Resume latest coc list.
-nnoremap <silent> ,p  :<C-u>CocListResume<CR>
+nnoremap <silent> ,.  :<C-u>CocListResume<CR>
 " Do default action for next item.
 nnoremap <silent> ,j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -259,9 +269,9 @@ nnoremap <silent> ,k  :<C-u>CocPrev<CR>
 "*****************************************************************************
 "" NERDTree
 "*****************************************************************************
-autocmd StdinReadPre * let s:std_in=1
-" Automatically open NERDTree when open 'vim'
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" " Automatically open NERDTree when open 'vim'
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if only NERDTree is open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " NERDTreeToggle
@@ -270,6 +280,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
+" Use <Leader>cd to change cwd to current file being edited
+:nnoremap <Leader>cd :cd %:p:h<CR>:NERDTreeCWD<CR>
 
 "*****************************************************************************
 "" Vim Airline
@@ -286,6 +298,45 @@ let g:airline_powerline_fonts = 1
 "*****************************************************************************
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+
+"*****************************************************************************
+"" Vim Startify
+"*****************************************************************************
+" Session related keymaps
+:nnoremap <Leader>ss :SSave<CR>
+:nnoremap <Leader>sl :SLoad<CR>
+:nnoremap <Leader>sd :SDelete<CR>
+:nnoremap <Leader>sc :SClose<CR>
+" Custom Header
+let g:ascii_header = [
+      \ '@@@  @@@@@@ @@@ @@@ @@@@@@@   @@@@@@   @@@@@@   @@@',
+      \ '@@! !@@     @@! !@@ @@!  @@@ @@!  @@@ @@!  @@@  @@!',
+      \ '!!@  !@@!!   !@!@!  @!@!!@!  @!@  !@! @!@  !@!  !!@',
+      \ '!!:     !:!   !!:   !!: :!!  !!:  !!! !!:!!:!:  !!:',
+      \ ':   ::.: :    .:     :   : :  : :. :   : :. ::: :  ',
+      \ '',
+      \ '@@@@@@@@  @@@@@@  @@@@@@@ @@@  @@@  @@@@@@  @@@  @@@',
+      \ '@@!      @@!  @@@   @@!   @@!  @@@ @@!  @@@ @@!@!@@@',
+      \ '@!!!:!   @!@!@!@!   @!!   @!@!@!@! @!@!@!@! @!@@!!@!',
+      \ '!!:      !!:  !!!   !!:   !!:  !!! !!:  !!! !!:  !!!',
+      \ ':        :   : :    :     :   : :  :   : : ::    : ',
+      \ '',
+      \ ]
+let g:startify_custom_header =
+      \ 'startify#center(g:ascii_header + startify#fortune#boxed())'
+let g:ascii_footer = [
+      \ "#########=====___========___============================================================___========___====#########",
+      \ "#########  __(   )    __(   )      __________       __________        __________     __(   )    __(   )   #########",
+      \ "##':v:`## (_______)  (_______)   ,'   Vim    |     |    Is    |      | Awesome  `.  (_______)  (_______)  ##':v:`##",
+      \ "##(o:0)##     ___        ___     `.__________|     |__________|      |__________,'      ___        ___    ##(o:0)##",
+      \ "###(:)###  __(   )    __(   )   -------||-----     -----||-----      -----||-------  __(   )    __(   )   ###(:)###",
+      \ '######### (_______)  (_______)         n        #                 #                 (_______)  (_______)  #########',
+      \ '##/\:/\##     \/         /\       ____/_\____   #=ooO=========Ooo=#     \-^-/           \/         /\     ##/\:/\##',
+      \ '#/(o:o)\# v             /  \/\       (z z)      #  \\  (o o)  //  #     (o o)       v             /  \/\  #/(o:o)\#',
+      \ '###(:)###    v       /`/   /  \  ooO--(_)--Ooo- --------(_)-------- ooO--(_)--Ooo-     v       /`/   /  \ ###(:)###',
+      \ '#########=================================================================================================#########',
+      \ ]
+let g:startify_custom_footer = 'startify#center(g:ascii_footer)'
 
 "*****************************************************************************
 "" Vim Colors Solarized
@@ -436,6 +487,12 @@ endfunction
 "" Screen
 "*****************************************************************************
 let g:ScreenImpl='GnuScreen'
+
+"*****************************************************************************
+"" Vim Wiki
+"*****************************************************************************
+:nmap <Leader>wk <Plug>VimwikiPrevLink
+:nmap <Leader>wj <Plug>VimwikiNextLink
 
 "*****************************************************************************
 "" Vim Floaterm

@@ -110,8 +110,8 @@ endfunction
 :map zP zszH
 
 " Use tab to jump between blocks, because it's easier
-:nnoremap <tab> %
-:vnoremap <tab> %
+" :nnoremap <tab> %
+" :vnoremap <tab> %
 
 " Map Home
 :map <Home><Home> ^
@@ -143,8 +143,8 @@ endfunction
 :imap <C-n> <Esc>:tabnew <Enter> :enew <Enter>
 
 " Open file
-:map <C-o> :e . <Enter>
-:imap <C-o> <Esc>:e . <Enter>
+" :map <C-o> :e . <Enter>
+" :imap <C-o> <Esc>:e . <Enter>
 
 " Save file
 :map <C-s> :w <Enter>
@@ -190,7 +190,7 @@ endfunction
 " :map mn :tabn <Enter>
 
 " Indent line(s)
-:map <C-i> >>
+" :map <C-i> >>
 
 " Safely close (warn for unsaved changes)  
 :map <F9> :q <Enter>
@@ -286,7 +286,7 @@ endfunction
 :imap <Bs> <Bs>
 
 " Tab jump to next block
-:map <Tab> %
+" :map <Tab> %
 
 " Horizontal scrolling for each mode
 :map <C-ScrollWheelUp> 10zh

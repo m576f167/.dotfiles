@@ -15,10 +15,12 @@ Plug 'https://github.com/honza/vim-snippets.git'
 
 " Directory Structure
 Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 
 " Visual
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/vim-airline/vim-airline-themes.git'
+Plug 'https://github.com/mhinz/vim-startify.git'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 Plug 'https://github.com/mhinz/vim-signify.git'
