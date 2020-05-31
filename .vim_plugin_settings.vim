@@ -446,6 +446,8 @@ let g:floaterm_keymap_prev   =  '<leader><F2>'
 let g:floaterm_keymap_next   =  '<leader><F3>'
 let g:floaterm_keymap_toggle =  '<leader><F4>'
 let g:floaterm_keymap_kill   =  '<leader><F7>'
+:map <Leader>ts :FloatermSend<CR>
+:vmap <Leader>ts :FloatermSend<CR>
 
 "*****************************************************************************
 "" Nvim R
