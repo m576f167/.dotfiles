@@ -149,8 +149,6 @@ let g:coc_global_extensions = [
       \ 'coc-omnisharp',
       "\ for php, use intelephense-docs
       \ 'coc-phpls',
-      "\ for PowerShellEditorService integration
-      \ 'coc-powershell',
       "\ for managing project
       \ 'coc-project',
       "\ for r, use R languageserver
@@ -194,6 +192,7 @@ let g:coc_global_extensions = [
       " \ 'coc-highlight', " provides default document symbol highlighting and color support
       " \ 'coc-lsp-wl', " for wolfram mathematica, fork of vscode-lsp-wl.
       " \ 'coc-metals', " for Scala using Metals
+      " \ 'coc-powershell', " for PowerShellEditorService integration
       " \ 'coc-pyright', " Pyright extension
       " \ 'coc-python', " for python, extension forked from vscode-python.
       " \ 'coc-reason', " for reasonml
