@@ -598,7 +598,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Tags in the project (ctags -R)
 :map <Leader>ftp :Tags<CR>
 " Tags in the current buffer
-:map <Leader>ftb :Tags<CR>
+:map <Leader>ftb :BTags<CR>
 " Help tags 1
 :map <Leader>fth :Helptags<CR>
 " Commands
@@ -608,7 +608,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Marks
 :map <Leader>fmk :Marks<CR>
 " Normal mode mappings
-:map <Leader>fmp :Marks<CR>
+:map <Leader>fmp :Maps<CR>
 
 "*****************************************************************************
 "" Vim Easytags
