@@ -13,3 +13,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # Load pyenv if exist
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Set bat config file path
+export BAT_CONFIG_PATH="~/.config/bat/config"

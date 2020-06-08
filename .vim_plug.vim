@@ -27,8 +27,8 @@ Plug 'https://github.com/mhinz/vim-signify.git'
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
 
 " Searching
-Plug 'https://github.com/mileszs/ack.vim.git'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'https://github.com/junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'https://github.com/junegunn/fzf.vim.git'
 
 " Syntax
 Plug 'https://github.com/sheerun/vim-polyglot.git'
@@ -74,6 +74,8 @@ Plug 'https://github.com/chrisbra/csv.vim.git'
 " Plug 'https://github.com/endel/vim-github-colorscheme.git'
 " Plug 'https://github.com/arialdomartini/oh-my-git.git'
 " Plug 'https://github.com/vim-syntastic/syntastic.git'
+" Plug 'https://github.com/mileszs/ack.vim.git'
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 
 " Initialize plugin system
 call plug#end()

@@ -1,6 +1,31 @@
 "*****************************************************************************
 "" COC
 "*****************************************************************************
+"-----------------------------------------------------------------------------
+" Functions
+"-----------------------------------------------------------------------------
+" Function to check if backspace is pressed
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Function to show documentation using either vim help or CocAction doHover
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" " Use C to open coc config
+" function! SetupCommandAbbrs(from, to)
+"   exec 'cnoreabbrev <expr> '.a:from
+"         \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+"         \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+" endfunction
+"-----------------------------------------------------------------------------
+" Vim configurations
+"-----------------------------------------------------------------------------
 " Give more space for displaying messages.
 set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -8,21 +33,83 @@ set cmdheight=2
 set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" " Always show the signcolumn, otherwise it would shift the text each time
+" " diagnostics appear/become resolved.
+" if has("patch-8.1.1564")
+"   " Recently vim can merge signcolumn and number column into one
+"   set signcolumn=number
+" else
+"   set signcolumn=yes
+" endif
+"-----------------------------------------------------------------------------
+" Autocommands
+"-----------------------------------------------------------------------------
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+" Correct comment highlighting on JSON
+autocmd FileType json syntax match Comment +\/\/.\+$+
+"-----------------------------------------------------------------------------
+" Commands
+"-----------------------------------------------------------------------------
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" " Use C to open coc config
+" call SetupCommandAbbrs('C', 'CocConfig')
+"-----------------------------------------------------------------------------
+" CoC Normal Mappings
+"-----------------------------------------------------------------------------
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [gg <Plug>(coc-diagnostic-prev)
+nmap <silent> ]gg <Plug>(coc-diagnostic-next)
+nmap <silent> [ge <Plug>(coc-diagnostic-prev-error)
+nmap <silent> ]ge <Plug>(coc-diagnostic-next-error)
+" Remap keys for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> ]r <Plug>(coc-range-select)
+nmap <silent> [r <Plug>(coc-range-select-backward)
+" GoTo code navigation.
+nmap <silent> ga <Plug>(coc-diagnostic-info)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> ge <Plug>(coc-declaration)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Formatting selected code.
+nmap <leader>p  <Plug>(coc-format-selected)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Code Refactor.
+nmap <leader>re <Plug>(coc-refactor)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+nmap <leader>as  <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>af  <Plug>(coc-codeaction)
+" Remap keys for applying codeAction to the current line.
+nmap <leader>al  <Plug>(coc-codeaction-line)
+" Remap keys for applying codelens of current line.
+nmap <leader>ac  <Plug>(coc-codelens-action)
+"-----------------------------------------------------------------------------
+" CoC Insert Mappings
+"-----------------------------------------------------------------------------
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -38,74 +125,33 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window.
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+"-----------------------------------------------------------------------------
+" CoC X Mappings
+"-----------------------------------------------------------------------------
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
 xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-" Use CTRL-S for selections ranges.
+" Remap keys for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <leader>s <Plug>(coc-range-select)
-xmap <silent> <leader>s <Plug>(coc-range-select)
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-" Correct comment highlighting on JSON
-autocmd FileType json syntax match Comment +\/\/.\+$+
-function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfunction
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
+xmap <silent> ]r <Plug>(coc-range-select)
+xmap <silent> [r <Plug>(coc-range-select-backward)
+" Formatting selected code.
+xmap <leader>p  <Plug>(coc-format-selected)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>as  <Plug>(coc-codeaction-selected)
+"-----------------------------------------------------------------------------
+" CoC O Mappings
+"-----------------------------------------------------------------------------
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+omap ic <Plug>(coc-classobj-i)
+omap ac <Plug>(coc-classobj-a)
 
 "*****************************************************************************
 "" CoC Extensions
@@ -272,19 +318,19 @@ nnoremap <silent> ,k  :<C-u>CocPrev<CR>
 "*****************************************************************************
 "" NERDTree
 "*****************************************************************************
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" Close vim if only NERDTree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+" NERDTreeToggle
+:nmap <M-F8> :NERDTreeToggle<CR>
+" Use <Leader>cd to change cwd to current file being edited
+:nnoremap <Leader>cd :cd %:p:h<CR>:NERDTreeCWD<CR>
 " " Automatically open NERDTree when open 'vim'
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Close vim if only NERDTree is open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" NERDTreeToggle
-:nmap <M-F8> :NERDTreeToggle<CR>
-" enable line numbers
-let NERDTreeShowLineNumbers=1
-" make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-" Use <Leader>cd to change cwd to current file being edited
-:nnoremap <Leader>cd :cd %:p:h<CR>:NERDTreeCWD<CR>
 
 "*****************************************************************************
 "" Vim Airline
@@ -458,11 +504,111 @@ let g:devicons_colors = {
 call DeviconsColors(g:devicons_colors)
 
 "*****************************************************************************
-"" Ack
+"" Vim Fzf
 "*****************************************************************************
-if executable('ag')
-	let g:ackprg = 'ag --vimgrep'
-endif
+" FZF Color setting to match the color scheme
+function! s:update_fzf_colors()
+  let rules =
+  \ { 'fg':      [['Normal',       'fg']],
+    \ 'bg':      [['Normal',       'bg']],
+    \ 'hl':      [['Comment',      'fg']],
+    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
+    \ 'bg+':     [['CursorColumn', 'bg']],
+    \ 'hl+':     [['Statement',    'fg']],
+    \ 'info':    [['PreProc',      'fg']],
+    \ 'prompt':  [['Conditional',  'fg']],
+    \ 'pointer': [['Exception',    'fg']],
+    \ 'marker':  [['Keyword',      'fg']],
+    \ 'spinner': [['Label',        'fg']],
+    \ 'header':  [['Comment',      'fg']] }
+  let cols = []
+  for [name, pairs] in items(rules)
+    for pair in pairs
+      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
+      if !empty(name) && code > 0
+        call add(cols, name.':'.code)
+        break
+      endif
+    endfor
+  endfor
+  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
+  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
+        \ empty(cols) ? '' : (' --color='.join(cols, ','))
+endfunction
+augroup _fzf
+  autocmd!
+  autocmd ColorScheme * call <sid>update_fzf_colors()
+augroup END
+" Add AG, which restarts Ag everytime
+function! AgFzf(query, fullscreen)
+  let command_fmt = 'ag --column --numbers --color --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang AG call AgFzf(<q-args>, <bang>0)
+" Add RG, which restarts ripgrep everytime
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+" ag search result (ALT-A to select all, ALT-D to deselect all)
+:map <Leader>fa :AG<CR>
+" ag search result (ALT-A to select all, ALT-D to deselect all)
+:map <Leader>fA :Ag<CR>
+" rg search result (ALT-A to select all, ALT-D to deselect all)
+:map <Leader>fr :RG<CR>
+" rg search result (ALT-A to select all, ALT-D to deselect all)
+:map <Leader>fR :Rg<CR>
+" Open buffers
+:map <Leader>fb :Buffers<CR>
+" locate command output
+:map <Leader>fo :Locate<CR>
+" Snippets (UltiSnips)
+:map <Leader>fs :Snippets<CR>
+" Windows
+:map <Leader>fw :Windows<CR>
+" Files (runs $FZF_DEFAULT_COMMAND if defined)
+:map <Leader>ffn :Files<CR>
+" File types
+:map <Leader>fft :Filetypes<CR>
+" Lines in loaded buffers
+:map <Leader>fll :Lines<CR>
+" Lines in the current buffer
+:map <Leader>flb :BLines<CR>
+" v:oldfiles and open buffers
+:map <Leader>fhh :History<CR>
+" Command history
+:map <Leader>fhc :History:<CR>
+" Search history
+:map <Leader>fhs :History/<CR>
+" Git files (git ls-files)
+:map <Leader>fgf :GFiles<CR>
+" Git files (git status)
+:map <Leader>fgs :GFiles?<CR>
+" Git commits (requires fugitive.vim)
+:map <Leader>fgc :Commits<CR>
+" Git commits for the current buffer
+:map <Leader>fgb :BCommits<CR>
+" Tags in the project (ctags -R)
+:map <Leader>ftp :Tags<CR>
+" Tags in the current buffer
+:map <Leader>ftb :Tags<CR>
+" Help tags 1
+:map <Leader>fth :Helptags<CR>
+" Commands
+:map <Leader>fcm :Commands<CR>
+" Color schemes
+:map <Leader>fcs :Colors<CR>
+" Marks
+:map <Leader>fmk :Marks<CR>
+" Normal mode mappings
+:map <Leader>fmp :Marks<CR>
 
 "*****************************************************************************
 "" Vim Easytags
@@ -499,12 +645,12 @@ endfunction
 "*****************************************************************************
 "" Tabular
 "*****************************************************************************
-:map <Leader>^ :Tab/
+:map <Leader>=<Tab> :Tab/
 
 "*****************************************************************************
 "" Scratch
 "*****************************************************************************
-:map <Tab>q :Scratch<CR>i
+" :map <Tab>q :Scratch<CR>i
 
 "*****************************************************************************
 "" Screen
@@ -576,3 +722,10 @@ let g:R_assign=0
 "" Vim Github Colorscheme
 "*****************************************************************************
 "colorscheme github
+"
+"*****************************************************************************
+"" Ack
+"*****************************************************************************
+" if executable('ag')
+" 	let g:ackprg = 'ag --vimgrep'
+" endif
