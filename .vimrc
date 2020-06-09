@@ -107,7 +107,7 @@ let mapleader = " "
 " Set fix indentation key
 :map <Leader>== gg=G
 " Map leader fc to clear search result
-:nmap <Leader>fc :noh<Enter>
+:nmap <Leader>fcl :noh<Enter>
 " Map to toggle numbering and relative numbering
 :map <Leader>`! :call ToggleNuAndRnuOn()<Enter>
 " Toggle mouse capability
