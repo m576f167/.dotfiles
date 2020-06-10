@@ -114,6 +114,8 @@ let mapleader = " "
 :map <Leader>`` :call ToggleMouseCap()<Enter>
 " Select all
 :map <Leader>va ggVG
+" Copy to clipboard
+:map <Leader>y "+y
 " Save file
 :map <C-s> :w <Enter>
 " Move to the upper window
@@ -251,6 +253,8 @@ let mapleader = " "
 "*****************************************************************************
 "" Visual Mappings
 "*****************************************************************************
+" Copy to clipboard
+:vmap <Leader>y "+y
 " Map Shift End and Home to select
 :vmap <S-End> $
 :vmap <S-Home> 0

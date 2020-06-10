@@ -49,7 +49,6 @@ Plug 'https://github.com/tomtom/tcomment_vim.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'https://github.com/moll/vim-bbye.git'
 Plug 'https://github.com/godlygeek/tabular.git'
-Plug 'https://github.com/ConradIrwin/vim-bracketed-paste.git'
 Plug 'https://github.com/mtth/scratch.vim.git'
 Plug 'https://github.com/ervandew/screen.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
@@ -76,6 +75,7 @@ Plug 'https://github.com/chrisbra/csv.vim.git'
 " Plug 'https://github.com/vim-syntastic/syntastic.git'
 " Plug 'https://github.com/mileszs/ack.vim.git'
 " Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+" Plug 'https://github.com/ConradIrwin/vim-bracketed-paste.git'
 
 " Initialize plugin system
 call plug#end()
