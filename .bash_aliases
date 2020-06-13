@@ -11,6 +11,10 @@ source ~/.oh-my-git/prompt.sh
 # Make sure python is installed with dynamic library in pyenv
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
+# Set pyenv variables
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 # Load pyenv if exist
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
@@ -33,6 +37,8 @@ function install_my_dependency() {
     sudo snap install gotop
     sudo apt-get install -y vim
     sudo apt-get install -y git
+    # Install pyenv
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     sudo apt-get install -y ripgrep
     sudo apt-get install -y silversearcher-ag
     sudo add-apt-repository ppa:lazygit-team/release; sudo apt-get update; sudo apt-get install lazygit

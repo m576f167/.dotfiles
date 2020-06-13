@@ -48,6 +48,7 @@ endif
 filetype plugin on                       " Enable checking for filetype plugin
 filetype indent on                       " Enable checking for filetype indent
 syntax on                                " Enable syntax color
+set clipboard=unnamed,unnamedplus        " Set all yank, delete, paste operations to use clipboard register \"* and \"+
 set ttymouse=xterm2                      " Enable mouse resizing when using GNU Screen
 set mouse=a                              " Enable mouse
 set nu                                   " Display line numbers
