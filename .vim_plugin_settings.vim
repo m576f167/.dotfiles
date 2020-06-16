@@ -265,18 +265,18 @@ nmap <Leader>bj <Plug>(coc-bookmark-next)
 nmap <Leader>bk <Plug>(coc-bookmark-prev)
 
 " ======================== coc-snippets ======================================
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-l> for jump to next placeholder
-let g:coc_snippet_next = '<C-l>'
-" Use <C-h> for jump to previous placeholder
-let g:coc_snippet_prev = '<C-h>'
-inoremap <silent><expr> <C-j>
+" Use <C-l> for both expand and jump (make expand higher priority.)
+imap <C-l> <Plug>(coc-snippets-expand-jump)
+" Use <C-l> for select text for visual placeholder of snippet.
+vmap <C-l> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder
+let g:coc_snippet_next = '<C-j>'
+" Use <C-k> for jump to previous placeholder
+let g:coc_snippet_prev = '<C-k>'
+inoremap <silent><expr> <C-l>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<C-j>" :
+      \ <SID>check_back_space() ? "\<C-l>" :
       \ coc#refresh()
 
 " ======================== CocList ===========================================
