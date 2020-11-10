@@ -42,6 +42,9 @@ Plug 'https://github.com/majutsushi/tagbar.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 
+" Test runner
+Plug 'vim-test/vim-test'
+
 " Miscellanious
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/tpope/vim-surround.git'

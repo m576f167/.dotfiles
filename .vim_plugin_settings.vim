@@ -628,6 +628,18 @@ endfunction
 :nmap <F8> :TagbarToggle<CR>
 
 "*****************************************************************************
+"" Vim-test
+"*****************************************************************************
+"" Map test keymaps
+nmap <silent> <Leader>tn :TestNearest<CR>
+nmap <silent> <Leader>tf :TestFile<CR>
+nmap <silent> <Leader>ts :TestSuite<CR>
+nmap <silent> <Leader>tl :TestLast<CR>
+nmap <silent> <Leader>tg :TestVisit<CR>
+" make test commands execute using floaterm.vim
+let test#strategy = "floaterm"
+
+"*****************************************************************************
 "" TComment
 "*****************************************************************************
 :map <C-_> :TComment<CR>
@@ -672,8 +684,8 @@ let g:floaterm_keymap_prev   =  '<leader><F2>'
 let g:floaterm_keymap_next   =  '<leader><F3>'
 let g:floaterm_keymap_toggle =  '<leader><F4>'
 let g:floaterm_keymap_kill   =  '<leader><F7>'
-:map <Leader>ts :FloatermSend<CR>
-:vmap <Leader>ts :FloatermSend<CR>
+:map <Leader><CR> :FloatermSend<CR>
+:vmap <Leader><CR> :FloatermSend<CR>
 
 "*****************************************************************************
 "" Nvim R
