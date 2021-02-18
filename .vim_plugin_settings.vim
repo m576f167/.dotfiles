@@ -157,8 +157,6 @@ omap ac <Plug>(coc-classobj-a)
 "" CoC Extensions
 "*****************************************************************************
 let g:coc_global_extensions = [
-      "\ bookmark extension
-      \ 'coc-bookmark',
       "\ for CloudFormation Linter, cfn-python-lint
       \ 'coc-cfn-lint',
       "\ for C/C++/Objective-C, use clangd
@@ -205,8 +203,6 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       "\ for ruby, use solargraph
       \ 'coc-solargraph',
-      "\ templates extension for file types
-      \ 'coc-template',
       "\ for LaTex using TexLab
       \ 'coc-texlab',
       "\ for javascript and typescript
