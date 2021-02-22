@@ -13,6 +13,9 @@ Plug 'https://github.com/neoclide/coc.nvim.git', {'branch': 'release'}
 " Snippets
 Plug 'https://github.com/honza/vim-snippets.git'
 
+" Debugger
+Plug 'https://github.com/puremourning/vimspector.git'
+
 " Directory Structure
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
@@ -57,6 +60,7 @@ Plug 'https://github.com/ervandew/screen.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/voldikss/vim-floaterm.git'
+Plug 'https://github.com/szw/vim-maximizer.git'
 
 " Language Specific
 Plug 'https://github.com/jalvesaq/Nvim-R.git'

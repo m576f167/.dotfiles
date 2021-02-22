@@ -179,6 +179,8 @@ let g:coc_global_extensions = [
       \ 'coc-html',
       "\ for java, use eclipse.jdt.ls
       \ 'coc-java',
+      "\ for java debug integration with vimspector
+      \ 'coc-java-debug',
       "\ for python, use jedi-language-server
       \ 'coc-jedi',
       "\ for json
@@ -310,6 +312,33 @@ nnoremap <silent> ,.  :<C-u>CocListResume<CR>
 nnoremap <silent> ,j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> ,k  :<C-u>CocPrev<CR>
+
+"*****************************************************************************
+"" Vimspector
+"*****************************************************************************
+" Key Mappings
+" When debugging, continue. Otherwise start debugging.
+:nmap <Leader>dd <Plug>VimspectorContinue
+" Stop debugging.
+:nmap <Leader>ds <Plug>VimspectorStop
+" Restart debugging with the same configuration.
+:nmap <Leader>dr <Plug>VimspectorRestart
+" Pause debugee.
+:nmap <Leader>dp <Plug>VimspectorPause
+" Toggle line breakpoint on the current line.
+:nmap <Leader>dbb <Plug>VimspectorToggleBreakpoint
+" Toggle conditional line breakpoint on the current line.
+:nmap <Leader>dbc <Plug>VimspectorToggleConditionalBreakpoint
+" Add a function breakpoint for the expression under cursor
+:nmap <Leader>dbf <Plug>VimspectorAddFunctionBreakpoint
+" Run to Cursor
+:nmap <Leader>dc  <Plug>VimspectorRunToCursor
+" Step Into
+:nmap <Leader>dl  <Plug>VimspectorStepInto
+" Step Over
+:nmap <Leader>dj  <Plug>VimspectorStepOver
+" Step out of current function scope
+:nmap <Leader>dk  <Plug>VimspectorStepOut
 
 "*****************************************************************************
 "" NERDTree
@@ -682,6 +711,14 @@ let g:floaterm_keymap_toggle =  '<leader><F4>'
 let g:floaterm_keymap_kill   =  '<leader><F7>'
 :map <Leader><CR> :FloatermSend<CR>
 :vmap <Leader><CR> :FloatermSend<CR>
+
+"*****************************************************************************
+"" Vim Maximizer
+"*****************************************************************************
+" Disable default mapping
+let g:maximizer_set_default_mapping = 0
+" Map key for vim maximizer
+:nnoremap <Leader>m :MaximizerToggle!<CR>
 
 "*****************************************************************************
 "" Nvim R
