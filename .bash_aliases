@@ -34,6 +34,9 @@ alias zf='z -I'      # use fzf to select in multiple matches
 alias zb='z -b'      # quickly cd to the parent directory
 alias zbb='z -b ..'  # quickly cd to immediate parent directory
 
+# Colorls aliases
+alias lc='colorls --gs --sd'
+
 # Function to install my dependencies
 function install_my_dependency() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -59,6 +62,7 @@ function install_my_dependency() {
     sudo apt-get install -y termshark
     sudo apt-get install -y fzf
     sudo apt-get install -y z.lua
+    gem install colorls
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Installing dependencies for MacOS"
     brew install pyenv
@@ -80,5 +84,6 @@ function install_my_dependency() {
     brew install termshark
     brew install --build-from-source fzf
     brew install z.lua
+    gem install colorls
   fi
 }
