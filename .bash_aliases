@@ -24,6 +24,16 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Set bat config file path
 export BAT_CONFIG_PATH="~/.config/bat/config"
 
+# Load z.lua
+eval "$(lua /usr/local/opt/z.lua/share/z.lua/z.lua --init bash enhanced once fzf)"
+
+# Z.lua aliases
+alias zz='z -c'      # restrict matches to subdirs of $PWD
+alias zi='z -i'      # cd with interactive selection
+alias zf='z -I'      # use fzf to select in multiple matches
+alias zb='z -b'      # quickly cd to the parent directory
+alias zbb='z -b ..'  # quickly cd to immediate parent directory
+
 # Function to install my dependencies
 function install_my_dependency() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -47,6 +57,8 @@ function install_my_dependency() {
     sudo apt-get install -y exuberant-ctags
     sudo apt-get install -y ranger
     sudo apt-get install -y termshark
+    sudo apt-get install -y fzf
+    sudo apt-get install -y z.lua
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Installing dependencies for MacOS"
     brew install pyenv
@@ -66,6 +78,7 @@ function install_my_dependency() {
     brew install ctags
     brew install ranger
     brew install termshark
+    brew install --build-from-source fzf
+    brew install z.lua
   fi
 }
-
