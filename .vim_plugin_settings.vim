@@ -677,7 +677,11 @@ let test#strategy = "floaterm"
 "Functions
 " Function to delete hidden buffers
 function! BdeleteHidden()
-  execute 'bdelete ' . join(map(filter(filter(getbufinfo(), 'v:val.listed'), 'empty(v:val.windows)'), 'v:val.bufnr'))
+  let hidden_buffers = map(filter(filter(getbufinfo(), 'v:val.listed'), 'empty(v:val.windows)'), 'v:val.bufnr')
+
+  if !empty(hidden_buffers)
+    execute 'bdelete ' . join(hidden_buffers)
+  endif
 endfunction
 command! -nargs=* -bang BdeleteHidden call BdeleteHidden()
 " Go to next and previous buffer
