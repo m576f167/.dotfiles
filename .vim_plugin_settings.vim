@@ -339,6 +339,8 @@ nnoremap <silent> ,k  :<C-u>CocPrev<CR>
 :nmap <Leader>dj  <Plug>VimspectorStepOver
 " Step out of current function scope
 :nmap <Leader>dk  <Plug>VimspectorStepOut
+" Manually trigger the popup evaluation
+:nmap <Leader>dv  <Plug>VimspectorBalloonEval
 
 "*****************************************************************************
 "" NERDTree
@@ -672,12 +674,19 @@ let test#strategy = "floaterm"
 "*****************************************************************************
 "" Vim BBye
 "*****************************************************************************
+"Functions
+" Function to delete hidden buffers
+function! BdeleteHidden()
+  execute 'bdelete ' . join(map(filter(filter(getbufinfo(), 'v:val.listed'), 'empty(v:val.windows)'), 'v:val.bufnr'))
+endfunction
+command! -nargs=* -bang BdeleteHidden call BdeleteHidden()
 " Go to next and previous buffer
 :noremap <F3> :bn<Enter>
 :noremap <F2> :bp<Enter>
 :noremap <F4> :ls<Enter>
 " Close buffer
 :noremap <S-F7> :Bdelete<Enter>
+:noremap <Leader><S-F7> :BdeleteHidden<CR>
 
 "*****************************************************************************
 "" Tabular
