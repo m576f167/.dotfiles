@@ -134,7 +134,7 @@ let mapleader = " "
 " Show tab list
 :noremap <M-F5> :tabs<CR>
 " Close tab
-:map <F7> :tabclose <Enter>
+:map <Leader><S-F7> :tabclose <Enter>
 " Go to previous tag in tag stack
 :noremap <S-F6> :tp<Enter>
 " Go to next tag in tag stack

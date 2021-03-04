@@ -685,8 +685,8 @@ command! -nargs=* -bang BdeleteHidden call BdeleteHidden()
 :noremap <F2> :bp<Enter>
 :noremap <F4> :ls<Enter>
 " Close buffer
-:noremap <S-F7> :Bdelete<Enter>
-:noremap <Leader><S-F7> :BdeleteHidden<CR>
+:noremap <F7> :Bdelete<Enter>
+:noremap <S-F7> :BdeleteHidden<CR>
 
 "*****************************************************************************
 "" Tabular
