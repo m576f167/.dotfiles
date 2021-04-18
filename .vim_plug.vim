@@ -70,6 +70,14 @@ Plug 'https://github.com/szymonmaszke/vimpyter.git'
 Plug 'https://github.com/chrisbra/csv.vim.git'
 
 "*****************************************************************************
+"" Nvim Plugins
+"*****************************************************************************
+" Miscellanious
+if has('nvim')
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+endif
+
+"*****************************************************************************
 "" Old Unused Plugins
 "*****************************************************************************
 " Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do' : './install.py --all' }
