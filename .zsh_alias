@@ -1,0 +1,11 @@
+# Set up Antigen
+source $HOME/.zsh_antigen
+
+bindkey -v
+
+source $HOME/.bash_aliases
+
+# Set up PyEnv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)" 
