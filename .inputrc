@@ -1,5 +1,4 @@
 # Set Terminal mode as vi
-set -o vi
 set editing-mode vi
 set keymap vi-command
 set show-mode-in-prompt on

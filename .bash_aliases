@@ -24,15 +24,15 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Set bat config file path
 export BAT_CONFIG_PATH="~/.config/bat/config"
 
-# Load z.lua
-eval "$(lua /usr/local/opt/z.lua/share/z.lua/z.lua --init bash enhanced once fzf)"
-
-# Z.lua aliases
-alias zz='z -c'      # restrict matches to subdirs of $PWD
-alias zi='z -i'      # cd with interactive selection
-alias zf='z -I'      # use fzf to select in multiple matches
-alias zb='z -b'      # quickly cd to the parent directory
-alias zbb='z -b ..'  # quickly cd to immediate parent directory
+# # Load z.lua
+# eval "$(lua /usr/local/opt/z.lua/share/z.lua/z.lua --init bash enhanced once fzf)"
+# 
+# # Z.lua aliases
+# alias zz='z -c'      # restrict matches to subdirs of $PWD
+# alias zi='z -i'      # cd with interactive selection
+# alias zf='z -I'      # use fzf to select in multiple matches
+# alias zb='z -b'      # quickly cd to the parent directory
+# alias zbb='z -b ..'  # quickly cd to immediate parent directory
 
 # Colorls aliases
 alias lc='colorls --gs --sd'
