@@ -85,5 +85,9 @@ function install_my_dependency() {
     brew install --build-from-source fzf
     brew install z.lua
     gem install colorls
+    # Install scrollzoom and add to autostart
+    swiftc ~/.scrollzoom/scroll_to_plusminus_macos.swift -o ~/.scrollzoom/scrollzoom
+    cp ~/.scrollzoom/com.custom.scrollzoom.plist ~/Library/LaunchAgents
+    launchctl load ~/Library/LaunchAgents/com.custom.scrollzoom.plist
   fi
 }
