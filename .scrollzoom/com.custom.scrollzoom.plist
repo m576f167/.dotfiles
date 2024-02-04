@@ -6,7 +6,7 @@
     <string>com.custom.scrollzoom</string>
     <key>ProgramArguments</key>
     <array>
-      <string>~/Apps/scrollzoom/scrollzoom</string>
+      <string>/opt/scrollzoom/scrollzoom</string>
     </array>
     <key>KeepAlive</key>
     <true/>
