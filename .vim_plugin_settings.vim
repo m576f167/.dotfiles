@@ -90,7 +90,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Formatting selected code.
 nmap <leader>p  <Plug>(coc-format-selected)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>aqf  <Plug>(coc-fix-current)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 " Code Refactor.
@@ -353,6 +353,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd FileType nerdtree setlocal relativenumber
 " NERDTreeToggle
 :nmap <M-F8> :NERDTreeToggle<CR>
+:nmap <Leader><C-f> :NERDTreeToggle<CR>
 " Use <Leader>cd to change cwd to current file being edited
 :nnoremap <Leader>cd :cd %:p:h<CR>:NERDTreeCWD<CR>
 " " Automatically open NERDTree when open 'vim'
@@ -653,6 +654,7 @@ endfunction
 "" Tagbar
 "*****************************************************************************
 :nmap <F8> :TagbarToggle<CR>
+:nmap <Leader><C-b> :TagbarToggle<CR>
 
 "*****************************************************************************
 "" Vim-test
@@ -686,11 +688,16 @@ endfunction
 command! -nargs=* -bang BdeleteHidden call BdeleteHidden()
 " Go to next and previous buffer
 :noremap <F3> :bn<Enter>
+:noremap <Leader><C-j> :bn<Enter>
 :noremap <F2> :bp<Enter>
+:noremap <Leader><C-k> :bp<Enter>
 :noremap <F4> :ls<Enter>
+:noremap <Leader>lb :ls<Enter>
 " Close buffer
 :noremap <F7> :Bdelete<Enter>
+:noremap <Leader>qb :Bdelete<Enter>
 :noremap <S-F7> :BdeleteHidden<CR>
+:noremap <Leader>qh :BdeleteHidden<CR>
 
 "*****************************************************************************
 "" Tabular
@@ -717,11 +724,16 @@ let g:ScreenImpl='GnuScreen'
 "" Vim Floaterm
 "*****************************************************************************
 " To Scrol window in terminal, press <C-w>N to switch to normal terminal mode
-let g:floaterm_keymap_new    =  '<leader><F1>'
-let g:floaterm_keymap_prev   =  '<leader><F2>'
-let g:floaterm_keymap_next   =  '<leader><F3>'
-let g:floaterm_keymap_toggle =  '<leader><F4>'
-let g:floaterm_keymap_kill   =  '<leader><F7>'
+" let g:floaterm_keymap_new    =  '<leader><F1>'
+" let g:floaterm_keymap_prev   =  '<leader><F2>'
+" let g:floaterm_keymap_next   =  '<leader><F3>'
+" let g:floaterm_keymap_toggle =  '<leader><F4>'
+" let g:floaterm_keymap_kill   =  '<leader><F7>'
+let g:floaterm_keymap_new    =  '<leader><C-t>n'
+let g:floaterm_keymap_prev   =  '<leader><C-t>k'
+let g:floaterm_keymap_next   =  '<leader><C-t>j'
+let g:floaterm_keymap_toggle =  '<leader><C-t>t'
+let g:floaterm_keymap_kill   =  '<leader><C-t>q'
 :map <Leader><CR> :FloatermSend<CR>
 :vmap <Leader><CR> :FloatermSend<CR>
 

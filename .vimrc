@@ -131,22 +131,31 @@ let mapleader = " "
 :noremap <C-h> <C-w>h
 " Go to next tab
 :noremap <F5> :tabn<CR>
+:noremap <Leader><C-l> :tabn<CR>
 " Go to previous tab
 :noremap <S-F5> :tabp<CR>
+:noremap <Leader><C-h> :tabp<CR>
 " Show tab list
 :noremap <M-F5> :tabs<CR>
+:noremap <Leader>lt :tabs<CR>
 " Close tab
-:map <Leader><S-F7> :tabclose <Enter>
+:map <Leader><S-F7> :tabclose<Enter>
+:map <Leader>qt :tabclose<Enter>
 " Go to previous tag in tag stack
 :noremap <S-F6> :tp<Enter>
+:noremap <Leader><C-s>k :tp<Enter>
 " Go to next tag in tag stack
 :noremap <F6> :tn<Enter>
+:noremap <Leader><C-s>j :tn<Enter>
 " Show tag list
 :noremap <M-F6> :ts<Enter>
+:noremap <Leader><C-s>l :ts<Enter>
 " Safely close (warn for unsaved changes)
-:map <F9> :q <Enter>
+:map <F9> :q<Enter>
+:map <Leader>qq :q<Enter>
 " Forced close (no warning for unsaved changes)
-:map <F10> :q! <Enter>
+:map <F10> :q!<Enter>
+:map <Leader>qf :q!<Enter>
 " Map up, down, left, right for GNU screen
 :map ^[[1;5A <S-Up>
 :map ^[[1;5B <S-Down>
