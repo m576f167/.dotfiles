@@ -16,6 +16,10 @@ Plug 'https://github.com/honza/vim-snippets.git'
 " Debugger
 Plug 'https://github.com/puremourning/vimspector.git'
 
+" Async Tasks
+Plug 'https://github.com/skywind3000/asyncrun.vim.git'
+Plug 'https://github.com/skywind3000/asynctasks.vim.git'
+
 " Directory Structure
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
@@ -49,6 +53,8 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'vim-test/vim-test'
 
 " Miscellanious
+Plug 'https://github.com/terryma/vim-expand-region.git'
+Plug 'https://github.com/coderifous/textobj-word-column.vim.git'
 Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tomtom/tcomment_vim.git'

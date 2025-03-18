@@ -343,6 +343,44 @@ nnoremap <silent> ,k  :<C-u>CocPrev<CR>
 :nmap <Leader>dv  <Plug>VimspectorBalloonEval
 
 "*****************************************************************************
+"" AsyncTasks
+"*****************************************************************************
+let g:asyncrun_open=6
+let g:asynctasks_template='~/.vim/task_template.ini'
+
+function! s:fzf_sink(what)
+  let p1 = stridx(a:what, '<')
+  if p1 >= 0
+    let name = strpart(a:what, 0, p1)
+    let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+    if name != ''
+      exec "AsyncTask ". fnameescape(name)
+    endif
+  endif
+endfunction
+
+function! s:fzf_task()
+  let rows = asynctasks#source(&columns * 48 / 100)
+  let source = []
+  for row in rows
+    let name = row[0]
+    let source += [name . '  ' . row[1] . '  : ' . row[2]]
+  endfor
+  let opts = { 'source': source, 'sink': function('s:fzf_sink'),
+             \ 'options': '+m --nth 1 --inline-info --tac' }
+  if exists('g:fzf_layout')
+    for key in keys(g:fzf_layout)
+      let opts[key] = deepcopy(g:fzf_layout[key])
+    endfor
+  endif
+  call fzf#run(opts)
+endfunction
+
+command! -nargs=0 AsyncTaskFzf call s:fzf_task()
+
+:nmap <Leader>flt :AsyncTaskFzf<Enter>
+
+"*****************************************************************************
 "" NERDTree
 "*****************************************************************************
 " enable line numbers
@@ -667,6 +705,13 @@ nmap <silent> <Leader>tl :TestLast<CR>
 nmap <silent> <Leader>tg :TestVisit<CR>
 " make test commands execute using floaterm.vim
 let test#strategy = "floaterm"
+
+"*****************************************************************************
+"" Vim-Expand-Region
+"*****************************************************************************
+" Map Expand Region from '+' to K and '_' to J
+:vmap K <Plug>(expand_region_expand)
+:vmap J <Plug>(expand_region_shrink)
 
 "*****************************************************************************
 "" TComment
