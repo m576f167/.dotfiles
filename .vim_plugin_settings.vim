@@ -379,6 +379,7 @@ endfunction
 command! -nargs=0 AsyncTaskFzf call s:fzf_task()
 
 :nmap <Leader>flt :AsyncTaskFzf<Enter>
+:nmap <Leader>qat :AsyncStop<Enter>
 
 "*****************************************************************************
 "" NERDTree
