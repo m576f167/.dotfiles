@@ -84,6 +84,7 @@ function install_my_dependency() {
     brew install termshark
     brew install --build-from-source fzf
     brew install z.lua
+    brew install antigen
     gem install colorls
     # Install scrollzoom and add to autostart
     swiftc ~/.scrollzoom/scroll_to_plusminus_macos.swift -o ~/.scrollzoom/scrollzoom
